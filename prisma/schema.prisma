@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Asset {
+  id                         Int                @id @default(autoincrement())
+  name                       String
+  assetFiles                 String[]
+  createdBy                  Int
+  updatedBy                  Int
+  createdAt                  DateTime           @default(now())
+  updatedAt                  DateTime           @updatedAt
+
+  deletedAt                  DateTime?          
+  deletedBy                  Int?
+  User                       User               @relation(fields: [createdBy], references: [id], map: "userId_Create_asset_fkey")
+  User_Asset_deletedByToUser User?              @relation("Asset_deletedByToUser", fields: [deletedBy], references: [id], onDelete: Restrict, map: "userId_Delete_asset_fkey")
+  User_Asset_updatedByToUser User               @relation("Asset_updatedByToUser", fields: [updatedBy], references: [id], map: "userId_Update_asset_fkey")
+  InstructionAsset           InstructionAsset[]
+}
+
+model Instruction {
+  id                               Int                @id @default(autoincrement())
+  title                            String
+  description                      String
+  duration                         Int
+  previewFile                      String
+  createdBy                        Int
+  updatedBy                        Int
+  createdAt                        DateTime           @default(now())
+  updatedAt                        DateTime           @updatedAt
+  deletedAt                        DateTime?
+  deletedBy                        Int?
+  User_Instruction_createdByToUser User               @relation("Instruction_createdByToUser", fields: [createdBy], references: [id], map: "userId_Create_instruction_fkey")
+  User_Instruction_deletedByToUser User?              @relation("Instruction_deletedByToUser", fields: [deletedBy], references: [id], onDelete: Restrict, map: "userId_Delete_instruction_fkey")
+  User_Instruction_updatedByToUser User               @relation("Instruction_updatedByToUser", fields: [updatedBy], references: [id], map: "userId_Update_instruction_fkey")
+  InstructionAsset                 InstructionAsset[]
+  Step                             Step[]
+}
+
+model InstructionAsset {
+  instructionId Int
+  assetId       Int
+  Asset         Asset       @relation(fields: [assetId], references: [id])
+  Instruction   Instruction @relation(fields: [instructionId], references: [id])
+
+  @@id([instructionId, assetId])
+}
+
+model Step {
+  id                        Int         @id @default(autoincrement())
+  type                      String
+  title                     String
+  description               String
+  stepNr                    Int
+  attachedFile              String?
+  instructionId             Int
+  createdBy                 Int
+  updatedBy                 Int
+  createdAt                 DateTime    @default(now())
+  updatedAt                 DateTime    @updatedAt
+  deletedAt                 DateTime?
+  deletedBy                 Int?
+  Instruction               Instruction @relation(fields: [instructionId], references: [id])
+  User_Step_createdByToUser User        @relation("Step_createdByToUser", fields: [createdBy], references: [id], map: "userId_Create_step_fkey")
+  User_Step_deletedByToUser User?       @relation("Step_deletedByToUser", fields: [deletedBy], references: [id], onDelete: Restrict, map: "userId_Delete_step_fkey")
+  User_Step_updatedByToUser User        @relation("Step_updatedByToUser", fields: [updatedBy], references: [id], map: "userId_Update_step_fkey")
+}
+
+model User {
+  id                                      Int           @id @default(autoincrement())
+  name                                    String
+  Asset                                   Asset[]
+  Asset_Asset_deletedByToUser             Asset[]       @relation("Asset_deletedByToUser")
+  Asset_Asset_updatedByToUser             Asset[]       @relation("Asset_updatedByToUser")
+  Instruction_Instruction_createdByToUser Instruction[] @relation("Instruction_createdByToUser")
+  Instruction_Instruction_deletedByToUser Instruction[] @relation("Instruction_deletedByToUser")
+  Instruction_Instruction_updatedByToUser Instruction[] @relation("Instruction_updatedByToUser")
+  Step_Step_createdByToUser               Step[]        @relation("Step_createdByToUser")
+  Step_Step_deletedByToUser               Step[]        @relation("Step_deletedByToUser")
+  Step_Step_updatedByToUser               Step[]        @relation("Step_updatedByToUser")
+}
