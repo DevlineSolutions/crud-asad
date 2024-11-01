@@ -146,13 +146,13 @@
 						class="cursor-pointer text-nowrap px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-black dark:text-gray-300"
 						on:click={() => sortData('id')}
 					>
-						ID {sortColumn === 'id' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
+						ID {sortColumn === 'id' ? (sortOrder === 'asc' ? '🠉' : '🠋') : ''}
 					</th>
 					<th
 						class="cursor-pointer text-nowrap px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-black dark:text-gray-300"
 						on:click={() => sortData('name')}
 					>
-						Name {sortColumn === 'name' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
+						Name {sortColumn === 'name' ? (sortOrder === 'asc' ? '🠉' : '🠋') : ''}
 					</th>
 
 					<th

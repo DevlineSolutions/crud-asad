@@ -180,13 +180,13 @@ let sortColumn = "";
 				class="px-6 py-3 text-left text-xs font-medium text-black dark:text-gray-300 uppercase text-nowrap tracking-wider cursor-pointer"
 				on:click={() => sortData("instructionId")}
 			>
-				Instruction ID {sortColumn === "instructionId" ? (sortOrder === "asc" ? "▲" : "▼") : ""}
+				Instruction ID {sortColumn === "instructionId" ? (sortOrder === "asc" ? "🠉" : "🠋") : ""}
 			</th>
 			<th
 				class="px-6 py-3 text-left text-xs font-medium text-black dark:text-gray-300 uppercase text-nowrap tracking-wider cursor-pointer"
 				on:click={() => sortData("assetId")}
 			>
-				Asset ID {sortColumn === "assetId" ? (sortOrder === "asc" ? "▲" : "▼") : ""}
+				Asset ID {sortColumn === "assetId" ? (sortOrder === "asc" ? "🠉" : "🠋") : ""}
 			</th>
 			<th
 				class="px-6 py-3 text-left text-xs font-medium text-black dark:text-gray-300 uppercase text-nowrap tracking-wider cursor-pointer"

@@ -364,38 +364,38 @@
 							class="cursor-pointer text-nowrap px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-black"
 							on:click={() => sortData('title')}
 						>
-							Title {sortColumn === 'title' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
+							Title {sortColumn === 'title' ? (sortOrder === 'asc' ? '🠉' : '🠋') : ''}
 						</th>
 						<th
 							class="cursor-pointer px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-black"
 							on:click={() => sortData('description')}
 						>
-							Description {sortColumn === 'description' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
+							Description {sortColumn === 'description' ? (sortOrder === 'asc' ? '🠉' : '🠋') : ''}
 						</th>
 
 						<th
 							class="cursor-pointer text-nowrap px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-black"
 							on:click={() => sortData('createdBy')}
 						>
-							Created By {sortColumn === 'createdBy' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
+							Created By {sortColumn === 'createdBy' ? (sortOrder === 'asc' ? '🠉' : '🠋') : ''}
 						</th>
 						<th
 							class="cursor-pointer text-nowrap px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-black"
 							on:click={() => sortData('updatedBy')}
 						>
-							Updated By {sortColumn === 'updatedBy' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
+							Updated By {sortColumn === 'updatedBy' ? (sortOrder === 'asc' ? '🠉' : '🠋') : ''}
 						</th>
 						<th
 							class="cursor-pointer text-nowrap px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-black"
 							on:click={() => sortData('createdAt')}
 						>
-							Created At {sortColumn === 'createdAt' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
+							Created At {sortColumn === 'createdAt' ? (sortOrder === 'asc' ? '🠉' : '🠋') : ''}
 						</th>
 						<th
 							class="cursor-pointer text-nowrap px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-black"
 							on:click={() => sortData('updatedAt')}
 						>
-							Updated At {sortColumn === 'updatedAt' ? (sortOrder === 'asc' ? '▲' : '▼') : ''}
+							Updated At {sortColumn === 'updatedAt' ? (sortOrder === 'asc' ? '🠉' : '🠋') : ''}
 						</th>
 						<th
 							class="text-nowrap px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-black"
